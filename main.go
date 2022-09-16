@@ -2,7 +2,9 @@ package main
 
 import (
     "net/http"
-
+    "fmt"
+    "io/ioutil"
+    "log"
     "github.com/gin-gonic/gin"
 )
 
@@ -18,9 +20,22 @@ var lectures = []oneLecture{
 
 // http://www.tlu.ee/masio/?id=aine&aine=IFI8110.DT&time=1663794000&keel=1
 
-// getAlbums responds with the list of all albums as JSON.
+// getLectures responds with the list of all lectures this week as JSON.
 func getLectures(c *gin.Context) {
     c.IndentedJSON(http.StatusOK, lectures)
+}
+
+func PageContent(link string)(string) {
+    res, err := http.Get(link)
+    if err != nil {
+        log.Fatal(err)
+    }
+    content, err := ioutil.ReadAll(res.Body)
+    res.Body.Close()
+    if err != nil {
+        log.Fatal(err)
+    }
+    return string(content)
 }
 
 func main() {
