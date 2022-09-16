@@ -16,6 +16,8 @@ var lectures = []oneLecture{
 	{Date: "Wednesday 22. September", Time: "10:00-13:00", Room: "A-343"},
 }
 
+// http://www.tlu.ee/masio/?id=aine&aine=IFI8110.DT&time=1663794000&keel=1
+
 // getAlbums responds with the list of all albums as JSON.
 func getLectures(c *gin.Context) {
     c.IndentedJSON(http.StatusOK, lectures)
