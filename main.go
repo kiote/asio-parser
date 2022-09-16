@@ -26,7 +26,12 @@ func uriPartCurrentTime() (string) {
     return "time=" + strconv.Itoa(int(sec))
 }
 
+func parseDate(pageContent string)(string) {
+     // var lectureDate = regexp.MustCompile(``)
+}
+
 func parseLectureInfo(pageContent string)(oneLecture) {
+    date := parseDate(pageContent)
     lecture := oneLecture{Date: "some date", Time: "some time", Room: "some room", Code: "some code"}
     return lecture 
 }
